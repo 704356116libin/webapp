@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+     <!--连接数据库的基本信息  -->
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql:///spring</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <!--配置hibernate基本信息  -->
+    
+    <!--hibernate所使用的数据库方言  -->
+  	 <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    
+    <!--是否在控制台打印sql语句  -->
+    <property name="show_sql">true</property>
+    
+    <!--是否对sql进行格式化 -->
+    <property name="format_sql">true</property>
+    
+    <!--绑定自动生成数据表的策略，最常用的是update,在表的结构发生变化的时候，也不会删除以后的字段
+    
+    create 每次都会创建一个新表，不管你之前有没有数据,原来的表若存在，则先删除原来的表，再创建一个新的表
+    create-drop ,在sessionfactory关闭后就会自动的删除
+    update,在表结构发生改变的时候，以前的字段也不会消失
+    validate,这个会检查和数据和表结构是否一样，不一样抛出异常，不会修改表的结构
+      -->
+    <property name="hbm2ddl.auto">update</property>
+    <!--指定关联的xml文件  ，这个需要注意的是，这个目录的结构-->
+   
+    
+    <mapping resource="dao/Student.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
